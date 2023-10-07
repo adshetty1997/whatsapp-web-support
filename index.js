@@ -99,6 +99,7 @@ app.post("/update-profile-pic",async(req,res)=>{
 
 const currentClient = new Client({
     authStrategy:new LocalAuth(),
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
 });
 
 currentClient.on('qr', (qrcode) => {
