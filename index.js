@@ -89,9 +89,6 @@ app.post("/update-profile-pic",async(req,res)=>{
 //WHATSAPP-WEB SOCKET
 
 const currentClient = new Client({
-    puppeteer:{
-        headless:false,//remove when testing done
-    },
     authStrategy:new LocalAuth(),
 });
 
