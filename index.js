@@ -34,14 +34,17 @@ app.get("/get-qr",async(req,res)=>{
 
 app.get("/get-messages/:id",async(req,res)=>{
     try{
+        if(!activeSession){
+            throw Error("User not logged in.");
+        }
         let receiverNumber = req.params.id;
-    if(!id){
-        throw Error("Sender contact number not provided.");
-    }
+        if(!id){
+            throw Error("Sender contact number not provided.");
+        }
 
-    let messageArray = [...(JSON.parse(chatData[`${receiverNumber}`].data))];
+        let messageArray = [...(JSON.parse(chatData[`${receiverNumber}`].data))];
 
-    res.status(201).send({messages:[...messageArray]});
+        res.status(201).send({messages:[...messageArray]});
     }
     catch(error){
         res.status(400).send({message:error.message});
@@ -50,6 +53,9 @@ app.get("/get-messages/:id",async(req,res)=>{
 
 app.post("/send-message",async(req,res)=>{
     try{
+        if(!activeSession){
+            throw Error("User not logged in.");
+        }
         let {receiver,message} = req.body;
         if(!!!receiver || !!!message){
             throw Error("Missing contact number or message.");
@@ -68,6 +74,9 @@ app.post("/send-message",async(req,res)=>{
 
 app.post("/update-profile-pic",async(req,res)=>{
     try{
+        if(!activeSession){
+            throw Error("User not logged in.");
+        }
         // let {receiver,message} = req.body;
         //     currentClient.setProfilePicture({
         //         data: image,
