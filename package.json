@@ -4,7 +4,7 @@
   "description": "Whatsapp-Web",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nodemon index.js",
     "start": "node index.js"
   },
   "author": "Adit Shetty",
@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.1",
     "redis": "^4.6.10",
     "whatsapp-web.js": "https://github.com/Julzk/whatsapp-web.js/tarball/jkr_hotfix_7"
   }
